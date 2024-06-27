@@ -1,0 +1,113 @@
+/* 전체 요소 모두 선택 */
+* {
+    margin: 0px;
+    padding: 0px; 
+  }
+  
+  body {
+    display: flex;
+    justify-content: center; /*중간정렬*/
+    align-items: start;      /*시작은 위에서부터*/
+  }
+  
+  /*content라는 박스를 body안쪽에 만듦*/
+  #content {
+    background-color: aliceblue;
+    padding: 20px;
+  }
+  header {
+    margin: 20px;
+    padding: 10px;
+  }
+
+  header > div, header > ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header > div {
+    font-size: xx-large;
+    font-weight: bold;
+  }
+  
+  header > ul {
+    margin: 20px;
+  }
+  
+  header li {
+    list-style: none;
+    display: inline-flex; /*박스안에서 글씨가 가운데에오게끔 + 박스를 잡음*/
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 10px; /*박스의 모서리를 둥글게*/
+    background-color:royalblue;
+  }
+  
+  header li:hover {
+    background-color: coral;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+   
+  article , section {
+    margin: 30px;
+  }
+  
+  h1 {
+    font-size: x-large;
+    margin-bottom: 20px;   /*프론트앤드와 밑에글의 간격*/
+    text-align: center;
+  }
+  
+  article {
+    padding: 40px;
+  }
+
+  section {
+    background-color: white;
+    padding: 20px;
+  }
+  
+  /*section안에 div박스를 따로 잡음*/
+  section > div {
+    display: flex;   /*img옆에 글이 나오도록, img박스 옆에 글박스가 정렬되도록*/
+    justify-content: start;
+    align-items: center;
+  }
+  
+  section p {
+    margin-left: 50px;
+  }
+  
+  img {
+    border-radius: 50%;
+  }
+  
+  footer {
+     background-color: black;
+     color: white;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     padding: 20px;
+     font-size: small;
+  }
+  
+  
+  /* 미디어쿼리 */
+  /*min-width:1280px는 1280이상일때 적용*/
+  @media screen and (min-width: 1280px) {
+    #content {
+      width: 80%;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
