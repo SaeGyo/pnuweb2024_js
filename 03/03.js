@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     // innerTEXT는 문자열을 그대로 출력함.
 
     bt.addEventListener("click", ()=>{
-        if (msg.innerHTML == '안녕' ;) msg.innerHTML == '잘가~~' ;
+        if (msg.innerHTML == '안녕' ) msg.innerHTML = '잘가~~' ;
         else msg.innerHTML = "안녕" ;
     });
 });
