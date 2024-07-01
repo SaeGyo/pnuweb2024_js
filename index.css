@@ -1,19 +1,17 @@
 /* 전체 요소 모두 선택 */
 * {
   margin: 0px;
-  padding: 0px;
+  padding: 0px; 
 }
 
 body {
   display: flex;
   justify-content: center;
-  /*중간정렬*/
   align-items: start;
-  /*시작은 위에서부터*/
 }
 
 main {
-  width: 80%;
+  width: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +26,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 20px; 
 }
 
 a {
@@ -51,18 +49,20 @@ section, #divTitle, #divContent {
 }
 
 section {
-  width: 100%;
+  width: 100%; 
   flex-direction: column;
 }
 
 #divTitle, #divContent, #msg {
   border: 1px dotted gray;
-  width: 90%;
+  width : 90%;
+  
   padding: 20px;
 }
 
 #divTitle {
   background-color: aliceblue;
+  border: 1px dotted gray;
   font-size: x-large;
   font-weight: bold;
   height: 60px;
@@ -78,24 +78,25 @@ section {
   margin-bottom: 10px;
 }
 
-#msg {
+#msg { 
   height: 60px;
 }
 
 button {
-  display: inline-flex;
+  display: inline-flex ;
   justify-content: center;
   align-items: center;
-
+  
   padding: 10px;
   background-color: royalblue;
   color: white;
-  font-size: medium;
+
+  font-size:medium;
   font-weight: bold;
   border-radius: 10px;
   border: none;
 }
 
 button:hover {
-  background-color: coral;
+  background-color: coral;  
 }

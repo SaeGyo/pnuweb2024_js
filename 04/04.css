@@ -2,17 +2,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-#divContent  div {
+  }
+  
+  #divContent div {
     margin: 10px;
-}
-
-h1 {
+  }
+  
+  h1 {
     text-align: center;
-}
-
-button {
+  }
+  
+  button {
     display: inline-flex;
     margin: 5px;
-}
+  }
+  
+  #msgRed {
+    color: red;
+  }
+  
+  #msgBlue {
+    color: blue;
+  }
