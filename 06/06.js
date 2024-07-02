@@ -1,50 +1,89 @@
-const convert = (sel1, sel2, lb1, lb2) => {
-    if (sel1.value === '℃') { //섭씨온도 -> 화씨온도
-      sel2.value = '℉';
-      lb1.textContent = '℃';
-      lb2.textContent = '℉';
+/* 
+업다운게임 
+1. DOM 요소 가져오기
+2. 확인 버튼 처리
+  - 확인 버튼 내용이 '확인'이 아니면 초기화
+  - 랜덤 수 생성 (초기화되기 전까지 한번만 생성) => flag변수
+  - 텍스트박스의 숫자와 비교 : 크면 -> 다운, 같으면 -> 성공, 작으면 -> 업
+  - 비교후 이미지 변경
+
+3. 성공하면
+  - 텍스트 박스를 숨김
+  - 버튼의 글자를 변경
+
+4. 초기화
+  - 이미지는 what
+  - 텍스트 상자가 보이게
+  - 버튼의 이름을 확인으로
+  - 랜덤 변수가 생성될 수 있도록 => flag변수
+
+*/
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  //DOM 요소 가져오기
+  const img = document.querySelector('img') ; //태그 selector
+  const txt1 = document.querySelector('input[type=number]') ; //속성 selector
+  const bt = document.querySelector('#btok') ; //아이디 selector
+  const btcancel = document.querySelector('button[type=reset]') ;
+
+  //랜덤수 생성 제어 변수
+  let flag = true ;  //true이면 랜덤수 생성가능, false이면 랜덤수 생성불가
+  
+  //랜덤수
+  let n = 0;
+  
+  //초기화 함수
+  // - 이미지는 what
+  // - 텍스트 상자가 보이게
+  // - 버튼의 이름을 확인으로
+  // - 랜덤 변수가 생성될 수 있도록 => flag변수
+  const init = ()=>{
+    img.setAttribute('src', './img/what.png') ;
+    txt1.value = '' ;
+    txt1.style.display = 'inline' ;
+    btok.textContent = '확인' ;
+    btcancel.style.display = 'inline' ;
+    flag = true ;
+  };
+
+  //2. 확인 버튼 처리
+  btok.addEventListener('click', (e)=>{ // e는 매개변수
+    e.preventDefault();
+
+    //확인버튼이 아닌경우
+    if (btok.textContent != '확인') {
+      init(); //초기화함수 호출 
+      return ;
     }
-    else {  //화씨온도 -> 섭씨온도
-      sel2.value = '℃';
-      lb1.textContent = '℉';
-      lb2.textContent = '℃';
+
+    //랜덤수 생성 (초기화 되기전까지 한번만 생성) => flag 변수
+    if(flag) { //if(flag) => flag==true일때 조건문 발동
+      n = Math.floor(Math.random() * 100) + 1 ; // 1~100중에서 랜덤 생성
+      console.log(n)
+      flag = false ;
     }
-  }
-  
-  const txtConvert = (txt1, lb1, txt2) => {
-    if (txt1.value != '' && lb1.textContent == '℃') {
-      txt2.value = (9/ 5) * txt1.value + 32  ;
-    } 
-    else if (txt1.value != '' && lb1.textContent == '℉') {
-      txt2.value = (txt1.value - 32) * ( 5/ 9)  ; 
+
+    // 숫자 입력 확인
+    if (txt1.value == '') { //if문에서 txt1을 쓰려면 반드시 value를붙여줘야함
+      alert('숫자를 입력하세요') ;
+      txt1.focus();
+      return ;
     }
-  }
-  
-  document.addEventListener('DOMContentLoaded', () => {
-    //select box
-    const sel1 = document.querySelector('#sel1');
-    const sel2 = document.querySelector('#sel2');
-  
-    //input
-    const txt1 = document.querySelector('#txt1');
-    const txt2 = document.querySelector('#txt2');
-  
-    //label
-    const lb1 = document.querySelector('#lb1');
-    const lb2 = document.querySelector('#lb2');
-  
-    txt1.addEventListener('change', () => {
-      txtConvert(txt1, lb1, txt2) ;
-    }) ;
-  
-    sel1.addEventListener('change', () => {  
-      convert(sel1, sel2, lb1, lb2) ; 
-      txtConvert(txt1, lb1, txt2) ;
-    })
-  
-    sel2.addEventListener('change', () => {  
-      convert(sel2, sel1, lb2, lb1) ; 
-      txtConvert(txt1, lb1, txt2) ;
-    })
-  
-  });
+
+    let usern = parseInt(txt1.value) ; //사용자입력수
+    if ( n > usern) { // up
+      img.setAttribute('src', './img/up.png') ;
+    }
+    else if ( n < usern) { // down
+      img.setAttribute('src', './img/down.png') ;
+    }
+    else {// 성공
+      img.setAttribute('src', './img/good.png') ;
+      txt1.style.display = 'none' ;
+      btok.textContent = '번호를 다시 생성하세요' ;
+      btcancel.style.display ='none' ;
+    }
+    
+  }) ;
+
+});
