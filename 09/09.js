@@ -23,11 +23,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
         console.log(arr)
 
         let tm = arr.map(item => 
-                    '<span class="sp${Math.floor(item / 10)}">
-                        ${item}
-                    </span>') ;
-
-        tm.splice(6,0, '<span>+</span>')
+            `<span class="sp${Math.floor(item / 10)}">
+              ${item}
+            </span>`) ;
+        
+        //6번째 추가
+        tm.splice(6,0, '<span id="spplus">+</span>')
 
         lotto.innerHTML = tm.join('');
     });
