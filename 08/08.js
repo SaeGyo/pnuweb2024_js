@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const txt1 = document.querySelector('#txt1') ;
     const btAdds = document.querySelectorAll('.btAdd') ;  //버튼 4개 다 가져오기
     const btDels = document.querySelectorAll('.btDel') ;
+    const btChanges = document.querySelectorAll('.btChange') ;
 
     // 배열 만들기
     let arr = [] ;
@@ -13,6 +14,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
         '바나나' : '🍌',
         '오렌지' : '🍊',
         '수박' : '🍉',
+        '오이' : '🥒',
+        '당근' : '🥕',
+        '가지' : '🍆',
+        '브로콜리' : '🥦'
     }
 
     for(let bt of btAdds) {
@@ -39,6 +44,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }) ;
     }
 
+    //삭제 버튼
     for(let bt of btDels) {
         bt.addEventListener('click', ()=>{
         
@@ -50,6 +56,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
         txt1.value = arr.join(' ');
         console.log(arr)
 
+        });
+    }
+
+    //변경 버튼
+    for(let bt of btChanges) {
+        bt.addEventListener('click', ()=>{
+            const w1 = bt.textContent.split('→')[0] ; //w1은 -> 앞에있는것
+            const w2 = bt.textContent.split('→')[1] ; //w2은 -> 뒤에있는것
+            console.log(w1, w2)
+
+            // arr = arr.map((item) => {return item==obj[w1] ? obj[w2] : item}) ; //삼항연산, map을 써서 원하는거 바꾸기
+            arr = arr.map(item => item==obj[w1] ? obj[w2] : item) ;
+            txt1.value = arr.join(' ');
+            
         });
     }
 
